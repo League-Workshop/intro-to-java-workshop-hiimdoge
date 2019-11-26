@@ -5,7 +5,7 @@ import org.jointheleague.graphical.robot.Robot;
 public class TriangleShell {
 
 	// 1. Create a new Robot
-
+    Robot toby = new Robot();
 	
 	void go() {
 		drawTriangle(100); // 3. delete this line (used only for testing)
