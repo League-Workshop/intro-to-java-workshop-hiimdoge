@@ -9,24 +9,54 @@ public class DragonFight {
 	public static void main(String[] args) {
 		
 		ImageIcon dragon = new ImageIcon("src/section4/dragonPicture.jpg");		
+		Random factory = new Random();
 		
 		JOptionPane.showMessageDialog(null, "Defeat the dragon to take its treasure!", "Dragon Fighter", 0, dragon);
 		// 2. Create a variable called "playerHealth" to store your health (set it equal to 100)
-	
+	    int playerHealth = 100;
 		// 3. Create a variable called "dragonHealth" to store the dragon's health (set it equal to 100)
-		
+		int dragonHealth = 100;
 		// 4. Create a variable to hold the damage the player's attack does each round
-		
+		int playerAttackDamage = 0;
 		// 5. Create a variable to hold the damage the dragon's attack does each round
-		
+		int dragonAttackDamage = 0;
 		
 		// 6.  Delete the slashes at the beginning of the next line.  
-		//while(playerHealth>0 && dragonHealth>0) {    //this line of code keeps the battle going until someone's health reaches 0 
+		while(playerHealth>0 && dragonHealth>0) {    //this line of code keeps the battle going until someone's health reaches 0 
 		
 		// 7. Add a closing mustache at the very bottom of this program (since we just added an opening mustache on the previous step).
 		
 		// 8. Ask the player in a pop-up if they want to attack the dragon with a yell or a kick
-		
+			String q2 = JOptionPane.showInputDialog("Do you want to attack the dragon with a yell or a kick?");
+			if (q2.equalsIgnoreCase("yell")) {
+			    int yell = factory.nextInt(11);
+			    playerAttackDamage += yell;
+			    dragonHealth -= yell;
+			    JOptionPane.showMessageDialog(null, "You did " + yell + " damage.");
+			    JOptionPane.showMessageDialog(null, "The dragon's health is " + dragonHealth + " out of 100.");
+			}
+			else if (q2.equalsIgnoreCase("kick")){
+			    int kick = factory.nextInt(26);
+			    playerAttackDamage += kick;
+			    dragonHealth -= kick;
+			    JOptionPane.showMessageDialog(null, "You did " + kick + " damage.");
+			    JOptionPane.showMessageDialog(null, "The dragon's health is " + dragonHealth + " out of 100.");
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "I'm sorry, please start over. You need to choose /n either yell or kick.");
+			}
+			int evilDragon = factory.nextInt(36);
+			playerHealth -= evilDragon;
+			JOptionPane.showMessageDialog(null, "The dragon did " + evilDragon + " damage.");
+			JOptionPane.showMessageDialog(null, "Your health is " + playerHealth + " out of 100.");
+			if (playerHealth <= 0) {
+			    JOptionPane.showMessageDialog(null, "You died. Game over.");
+			    System.exit(0);
+			}
+			else if (dragonHealth <= 0) {
+			    JOptionPane.showMessageDialog(null, "You won! You defeated the dragon and got the treasure.\n Congratulations!!");
+			    System.exit(0);
+			}
 		// 9. If they typed in "yell":
 		
 			//-- Find a random number between 0 and 10 and store it in dragonDamage
@@ -61,5 +91,6 @@ public class DragonFight {
 			//-- Pop up a message that tells the their current health and the dragon's currently health (Bonus: Also display the amount of health that was lost for each player this round)
 			
 		}
+	  }
 	}
 

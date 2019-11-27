@@ -26,13 +26,21 @@ public class MadlibsOfTheAmazon {
 		// back to the [place]. Good luck!
 		
 		// Make a pop-up for the final story. You can use \n to go to the next line
-		JOptionPane.showMessageDialog(null, "Piranhas are more " + adjective +
-				" during the day, so cross the river at \n night. Piranhas are attracted to fresh " + typeOfLiquid + 
-				" and will most \n likely take a bite out of your " + bodyPart + 
+		speak("Piranhas are more " + adjective +
+				" during the day, so cross the river at night. Piranhas are attracted to fresh " + typeOfLiquid + 
+				" and will most likely take a bite out of your " + bodyPart + 
 				" if you "+ verb + 
-				". Whatever \n  you do, if you have an open wound, try to find another way to get \n back to the " + place +
+				". Whatever  you do, if you have an open wound, try to find another way to get back to the " + place +
 				". Good luck! Don't die!!");
 
+	}
+	static void speak(String words) {
+		try {
+			Runtime.getRuntime().exec("say " + words).waitFor();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
 
